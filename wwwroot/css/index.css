@@ -20,7 +20,10 @@
     box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9184bef4df053048476b6485cbfe5bf1b40b2701
 html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
@@ -110,7 +113,11 @@ img, video {
 
     .nav a {
         text-decoration: none;
+<<<<<<< HEAD
         font-weight: 600;
+=======
+        font-weight: 500;
+>>>>>>> 9184bef4df053048476b6485cbfe5bf1b40b2701
     }
 
         .nav a:not(.btn):hover {

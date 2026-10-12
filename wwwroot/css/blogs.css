@@ -51,7 +51,11 @@
 
     .nav a {
         text-decoration: none;
+<<<<<<< HEAD
         font-weight: 600;
+=======
+        font-weight: 500;
+>>>>>>> 9184bef4df053048476b6485cbfe5bf1b40b2701
     }
 
 .btn {
