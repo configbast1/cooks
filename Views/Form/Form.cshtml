@@ -1,0 +1,238 @@
+﻿@model Project001.Models.RegistrationViewModel
+@{
+    ViewData["Title"] = "Регистрация";
+
+    string Err(string key) =>
+        ViewData.ModelState.TryGetValue(key, out var entry) && entry.Errors.Count > 0
+            ? entry.Errors[0].ErrorMessage
+            : "";
+
+    string InvalidClass(string key) => Err(key).Length > 0 ? "input-validation-error" : "";
+
+    var countries = new[] { "Украина", "Польша", "Германия", "Чехия", "Литва", "Другая" };
+}
+
+<link rel="stylesheet" href="~/css/form.css" asp-append-version="true" />
+
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <a class="modal-close" href="@Url.Action("Index", "Home")" aria-label="Закрыть">&times;</a>
+
+        <h2 id="modalTitle">Введите данные для регистрации</h2>
+        <p class="modal-sub">Поля, отмеченные *, обязательны для заполнения.</p>
+
+        @if (Err("").Length > 0)
+        {
+            <div class="form-alert" role="alert">@Err("")</div>
+        }
+
+        <form id="regForm" asp-controller="Form" asp-action="Register" method="post" novalidate>
+
+            <fieldset class="group">
+                <legend>О вас</legend>
+
+                <div class="row">
+                    <div class="field">
+                        <label for="name">Имя *</label>
+                        <input id="name" name="name" type="text" placeholder="Ваше имя" maxlength="50"
+                               autocomplete="given-name" value="@Model.Name" class="@InvalidClass("Name")" />
+                        <span class="error" data-error-for="name">@Err("Name")</span>
+                    </div>
+                    <div class="field">
+                        <label for="lastName">Фамилия *</label>
+                        <input id="lastName" name="lastName" type="text" placeholder="Ваша фамилия" maxlength="50"
+                               autocomplete="family-name" value="@Model.LastName" class="@InvalidClass("LastName")" />
+                        <span class="error" data-error-for="lastName">@Err("LastName")</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="field">
+                        <label for="birthDate">Дата рождения</label>
+                        <input id="birthDate" name="birthDate" type="date" max="@DateTime.Today.ToString("yyyy-MM-dd")"
+                               autocomplete="bday" value="@(Model.BirthDate?.ToString("yyyy-MM-dd"))"
+                               class="@InvalidClass("BirthDate")" />
+                        <span class="error" data-error-for="birthDate">@Err("BirthDate")</span>
+                    </div>
+                    <div class="field">
+                        <label for="gender">Пол</label>
+                        <select id="gender" name="gender">
+                            <option value="">Не указывать</option>
+                            <option value="Женский" selected="@(Model.Gender == "Женский")">Женский</option>
+                            <option value="Мужской" selected="@(Model.Gender == "Мужской")">Мужской</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="group">
+                <legend>Контакты</legend>
+
+                <div class="field">
+                    <label for="email">Email *</label>
+                    <input id="email" name="email" type="email" placeholder="name@example.com" maxlength="120"
+                           autocomplete="email" value="@Model.Email" class="@InvalidClass("Email")" />
+                    <span class="error" data-error-for="email">@Err("Email")</span>
+                </div>
+
+                <div class="field">
+                    <label for="phone">Телефон *</label>
+                    <input id="phone" name="phone" type="tel" placeholder="+380..." inputmode="tel"
+                           autocomplete="tel" value="@Model.Phone" class="@InvalidClass("Phone")" />
+                    <span class="error" data-error-for="phone">@Err("Phone")</span>
+                </div>
+
+                <div class="row">
+                    <div class="field">
+                        <label for="country">Страна *</label>
+                        <select id="country" name="country" autocomplete="country-name">
+                            @foreach (var c in countries)
+                            {
+                                <option value="@c" selected="@(Model.Country == c)">@c</option>
+                            }
+                        </select>
+                        <span class="error" data-error-for="country">@Err("Country")</span>
+                    </div>
+                    <div class="field">
+                        <label for="city">Город</label>
+                        <input id="city" name="city" type="text" placeholder="Ваш город" maxlength="80"
+                               autocomplete="address-level2" value="@Model.City" class="@InvalidClass("City")" />
+                        <span class="error" data-error-for="city">@Err("City")</span>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="field field-check">
+                <label class="check">
+                    <input id="newsletter" name="newsletter" type="checkbox" value="true" checked="@Model.Newsletter" />
+                    <span>Хочу получать новые рецепты на email</span>
+                </label>
+            </div>
+
+            <div class="field field-check">
+                <label class="check">
+                    <input id="agreement" name="agreement" type="checkbox" value="true" checked="@Model.Agreement" />
+                    <span>Я соглашаюсь с условиями обработки персональных данных *</span>
+                </label>
+                <span class="error" data-error-for="agreement">@Err("Agreement")</span>
+            </div>
+
+            <button type="submit" class="btn btn-black" id="submitBtn">Зарегистрироваться</button>
+        </form>
+
+        <p class="modal-note">Все данные хранятся в безопасности.</p>
+        <p class="modal-note modal-note-tight">
+            Любите готовить? <a class="text-link" href="@Url.Action("Index", "Preferences")">Заполните кулинарную анкету</a> (по желанию).
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        (function () {
+            var homeUrl = "@Url.Action("Index", "Home")";
+            var form = document.getElementById("regForm");
+            var submitBtn = document.getElementById("submitBtn");
+
+            // Правила валидации
+            var rules = {
+                name: function (f) {
+                    var v = f.name.value.trim();
+                    if (!v) return "Введите имя";
+                    if (v.length < 2) return "Имя должно содержать минимум 2 символа";
+                    return "";
+                },
+                lastName: function (f) {
+                    var v = f.lastName.value.trim();
+                    if (!v) return "Введите фамилию";
+                    if (v.length < 2) return "Фамилия должна содержать минимум 2 символа";
+                    return "";
+                },
+                email: function (f) {
+                    var v = f.email.value.trim();
+                    if (!v) return "Введите email";
+                    if (!/^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/.test(v)) return "Некорректный email";
+                    return "";
+                },
+                phone: function (f) {
+                    var v = f.phone.value.trim();
+                    if (!v) return "Введите телефон";
+                    if (!/^\+?[0-9]{12,15}$/.test(v)) return "Некорректный номер телефона";
+                    return "";
+                },
+                birthDate: function (f) {
+                    var v = f.birthDate.value;
+                    if (!v) return "";
+                    var d = new Date(v);
+                    if (isNaN(d.getTime()) || d > new Date() || d.getFullYear() < 1900)
+                        return "Некорректная дата рождения";
+                    return "";
+                },
+                agreement: function (f) {
+                    return f.agreement.checked ? "" : "Необходимо принять условия";
+                }
+            };
+
+            function showError(field, message) {
+                var span = form.querySelector('[data-error-for="' + field + '"]');
+                var input = form.elements[field];
+                if (span) span.textContent = message;
+                if (input) input.classList.toggle("input-validation-error", !!message);
+            }
+
+            function validateField(field) {
+                var message = rules[field](form);
+                showError(field, message);
+                return !message;
+            }
+
+            // Проверка при потере фокуса / изменении
+            Object.keys(rules).forEach(function (field) {
+                var input = form.elements[field];
+                var evt = (field === "agreement" || field === "birthDate") ? "change" : "blur";
+                input.addEventListener(evt, function () { validateField(field); });
+                // Убираем ошибку, как только пользователь начал исправлять
+                input.addEventListener("input", function () {
+                    if (input.classList.contains("input-validation-error")) validateField(field);
+                });
+            });
+
+            // Телефон: оставляем только цифры и ведущий "+"
+            form.elements.phone.addEventListener("input", function () {
+                var v = this.value.replace(/[^\d+]/g, "");
+                this.value = v.charAt(0) === "+" ? "+" + v.slice(1).replace(/\+/g, "") : v.replace(/\+/g, "");
+            });
+
+            // Проверка всех полей при отправке
+            form.addEventListener("submit", function (e) {
+                var ok = true;
+                Object.keys(rules).forEach(function (field) {
+                    if (!validateField(field)) ok = false;
+                });
+                if (!ok) {
+                    e.preventDefault();
+                    var firstInvalid = form.querySelector(".input-validation-error");
+                    if (firstInvalid) firstInvalid.focus();
+                    return;
+                }
+                // Защита от двойной отправки
+                submitBtn.disabled = true;
+                submitBtn.textContent = "Отправка…";
+            });
+
+            // Фокус на первое поле с серверной ошибкой
+            var serverInvalid = form.querySelector(".input-validation-error");
+            if (serverInvalid) serverInvalid.focus();
+
+            // Закрытие по клику на фон (клик внутри окна игнорируется)
+            document.getElementById("modalOverlay").addEventListener("click", function (e) {
+                if (e.target === this) window.location.href = homeUrl;
+            });
+
+            // Закрытие по Escape
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape") window.location.href = homeUrl;
+            });
+        })();
+    </script>
+}

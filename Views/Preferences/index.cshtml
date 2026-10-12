@@ -1,0 +1,215 @@
+﻿@model Project001.Controllers.CookingPreferencesViewModel
+@using Project001.Controllers
+@{
+    ViewData["Title"] = "Кулинарная анкета";
+
+    string Err(string key) =>
+        ViewData.ModelState.TryGetValue(key, out var entry) && entry.Errors.Count > 0
+            ? entry.Errors[0].ErrorMessage
+            : "";
+
+    string InvalidClass(string key) => Err(key).Length > 0 ? "input-validation-error" : "";
+
+    bool saved = TempData["PrefsSaved"] is true;
+}
+
+<link rel="stylesheet" href="~/css/form.css" asp-append-version="true" />
+
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <a class="modal-close" href="@Url.Action("Index", "Home")" aria-label="Закрыть">&times;</a>
+
+        @if (saved)
+        {
+            <div class="form-success" role="status">
+                <div class="form-success__icon" aria-hidden="true">&#10003;</div>
+                <h2 id="modalTitle">Спасибо за ответы!</h2>
+                <p>Мы учтём ваши предпочтения и будем подбирать рецепты точнее.</p>
+                <a class="btn btn-black" href="@Url.Action("Index", "Home")">На главную</a>
+            </div>
+        }
+        else
+        {
+            <h2 id="modalTitle">Расскажите о своей готовке</h2>
+            <p class="modal-sub">
+                Анкета необязательна. Укажите email, с которым регистрировались, — ответы привяжутся к вашему профилю.
+            </p>
+
+            @if (Err("").Length > 0)
+            {
+                <div class="form-alert" role="alert">@Err("")</div>
+            }
+
+            <form id="prefForm" asp-controller="Preferences" asp-action="Save" method="post" novalidate>
+
+                <div class="field">
+                    <label for="email">Email *</label>
+                    <input id="email" name="email" type="email" placeholder="name@example.com" maxlength="120"
+                           autocomplete="email" value="@Model.Email" class="@InvalidClass("Email")" />
+                    <span class="error" data-error-for="email">@Err("Email")</span>
+                </div>
+
+                <fieldset class="group">
+                    <legend>Опыт</legend>
+
+                    <div class="row">
+                        <div class="field">
+                            <label for="cookingLevel">Уровень готовки</label>
+                            <select id="cookingLevel" name="cookingLevel">
+                                <option value="">Не указывать</option>
+                                @foreach (var o in CookingPreferencesViewModel.Levels)
+                                {
+                                    <option value="@o" selected="@(Model.CookingLevel == o)">@o</option>
+                                }
+                            </select>
+                            <span class="error" data-error-for="cookingLevel">@Err("CookingLevel")</span>
+                        </div>
+                        <div class="field">
+                            <label for="frequency">Как часто готовите</label>
+                            <select id="frequency" name="frequency">
+                                <option value="">Не указывать</option>
+                                @foreach (var o in CookingPreferencesViewModel.Frequencies)
+                                {
+                                    <option value="@o" selected="@(Model.Frequency == o)">@o</option>
+                                }
+                            </select>
+                            <span class="error" data-error-for="frequency">@Err("Frequency")</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label for="cookingTime">Время на одно блюдо</label>
+                            <select id="cookingTime" name="cookingTime">
+                                <option value="">Не указывать</option>
+                                @foreach (var o in CookingPreferencesViewModel.Times)
+                                {
+                                    <option value="@o" selected="@(Model.CookingTime == o)">@o</option>
+                                }
+                            </select>
+                            <span class="error" data-error-for="cookingTime">@Err("CookingTime")</span>
+                        </div>
+                        <div class="field">
+                            <label for="diet">Тип питания</label>
+                            <select id="diet" name="diet">
+                                <option value="">Не указывать</option>
+                                @foreach (var o in CookingPreferencesViewModel.Diets)
+                                {
+                                    <option value="@o" selected="@(Model.Diet == o)">@o</option>
+                                }
+                            </select>
+                            <span class="error" data-error-for="diet">@Err("Diet")</span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="allergies">Аллергии и нелюбимые продукты</label>
+                        <input id="allergies" name="allergies" type="text" maxlength="150"
+                               placeholder="Например: орехи, мёд" value="@Model.Allergies" class="@InvalidClass("Allergies")" />
+                        <span class="error" data-error-for="allergies">@Err("Allergies")</span>
+                    </div>
+                </fieldset>
+
+                <fieldset class="group">
+                    <legend>Предпочтения</legend>
+
+                    <div class="field">
+                        <span class="label-like" id="interestsLabel">Что вам интересно</span>
+                        <div class="chips" role="group" aria-labelledby="interestsLabel">
+                            @foreach (var item in CookingPreferencesViewModel.InterestOptions)
+                            {
+                                <label class="chip">
+                                    <input type="checkbox" name="interests" value="@item" checked="@(Model.Interests.Contains(item))" />
+                                    <span>@item</span>
+                                </label>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <span class="label-like" id="equipmentLabel">Кухонная техника</span>
+                        <div class="chips" role="group" aria-labelledby="equipmentLabel">
+                            @foreach (var item in CookingPreferencesViewModel.EquipmentOptions)
+                            {
+                                <label class="chip">
+                                    <input type="checkbox" name="equipment" value="@item" checked="@(Model.Equipment.Contains(item))" />
+                                    <span>@item</span>
+                                </label>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="about">О себе</label>
+                        <textarea id="about" name="about" rows="3" maxlength="300"
+                                  placeholder="Расскажите, что любите готовить">@Model.About</textarea>
+                        <span class="counter"><span id="aboutCount">@((Model.About ?? "").Length)</span> / 300</span>
+                        <span class="error" data-error-for="about">@Err("About")</span>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="btn btn-black" id="submitBtn">Отправить анкету</button>
+            </form>
+
+            <p class="modal-note">Все данные хранятся в безопасности.</p>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        (function () {
+            var homeUrl = "@Url.Action("Index", "Home")";
+            var form = document.getElementById("prefForm");
+
+            if (form) {
+                var submitBtn = document.getElementById("submitBtn");
+
+                function emailError() {
+                    var v = form.email.value.trim();
+                    if (!v) return "Введите email";
+                    if (!/^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/.test(v)) return "Некорректный email";
+                    return "";
+                }
+
+                function showEmailError() {
+                    var message = emailError();
+                    form.querySelector('[data-error-for="email"]').textContent = message;
+                    form.email.classList.toggle("input-validation-error", !!message);
+                    return !message;
+                }
+
+                form.email.addEventListener("blur", showEmailError);
+                form.email.addEventListener("input", function () {
+                    if (form.email.classList.contains("input-validation-error")) showEmailError();
+                });
+
+                // Счётчик символов в "О себе"
+                var about = document.getElementById("about");
+                var aboutCount = document.getElementById("aboutCount");
+                about.addEventListener("input", function () { aboutCount.textContent = about.value.length; });
+
+                form.addEventListener("submit", function (e) {
+                    if (!showEmailError()) {
+                        e.preventDefault();
+                        form.email.focus();
+                        return;
+                    }
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = "Отправка…";
+                });
+
+                var serverInvalid = form.querySelector(".input-validation-error");
+                if (serverInvalid) serverInvalid.focus();
+            }
+
+            // Закрытие по клику на фон и по Escape
+            document.getElementById("modalOverlay").addEventListener("click", function (e) {
+                if (e.target === this) window.location.href = homeUrl;
+            });
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape") window.location.href = homeUrl;
+            });
+        })();
+    </script>
+}
