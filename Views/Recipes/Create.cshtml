@@ -1,0 +1,43 @@
+@model Recipe
+@{
+    ViewData["Title"] = "Новый рецепт";
+}
+
+<div class="wrap">
+    <h1>Новый рецепт</h1>
+
+    <form asp-controller="Recipes" asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="form-alert"></div>
+
+    <div class="field">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="error"></span>
+    </div>
+
+    <div class="field">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" rows="3" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="error"></span>
+    </div>
+
+    <div class="field">
+        <label asp-for="Ingredients"></label>
+        <textarea asp-for="Ingredients" rows="8" class="form-control"
+                  placeholder="По одному ингредиенту в строке"></textarea>
+        <span asp-validation-for="Ingredients" class="error"></span>
+    </div>
+
+    <div class="field">
+        <label asp-for="Instructions"></label>
+        <textarea asp-for="Instructions" rows="8" class="form-control"
+                  placeholder="По одному шагу в строке"></textarea>
+        <span asp-validation-for="Instructions" class="error"></span>
+    </div>
+
+        <div class="field">
+            <button type="submit" class="btn btn-blue">Сохранить</button>
+            <a asp-action="Index">Отмена</a>
+        </div>
+    </form>
+</div>

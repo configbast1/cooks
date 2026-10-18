@@ -1,4 +1,29 @@
-﻿@page
-@model Project001.Views.Blogs.CreateModel
+@model Blog
 @{
+    ViewData["Title"] = "Новый блог";
 }
+
+<div class="wrap">
+    <h1>Новый блог</h1>
+
+    <form asp-controller="Blogs" asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="form-alert"></div>
+
+    <div class="field">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="error"></span>
+    </div>
+
+    <div class="field">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" rows="4" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="error"></span>
+    </div>
+
+        <div class="field">
+            <button type="submit" class="btn btn-blue">Создать</button>
+            <a asp-action="Index">Отмена</a>
+        </div>
+    </form>
+</div>

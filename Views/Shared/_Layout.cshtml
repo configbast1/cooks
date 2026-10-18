@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-﻿
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -20,9 +18,8 @@
             <nav class="nav" aria-label="Головна">
                 <a href="/Blogs">Блог</a>
                 <a href="/Recipes">Рецепти</a>
-                <a href="/Form">Регестрация</a>
-                <a href="/Preferences">Форма</a>
-
+                <a href="/Form">Регистрация</a>
+                <a href="/Preferences">Анкета</a>
             </nav>
         </div>
     </header>
@@ -31,12 +28,9 @@
         @RenderBody()
     </main>
 
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-=======
-﻿@page
-@model Project001.Views.Shared._LayoutModel
-@{
-}
->>>>>>> 9184bef4df053048476b6485cbfe5bf1b40b2701

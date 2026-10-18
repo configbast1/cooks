@@ -1,0 +1,17 @@
+@model Recipe
+@{
+    ViewData["Title"] = "Удаление рецепта";
+}
+
+<div class="wrap">
+    <h1>Удалить рецепт?</h1>
+
+    <p><strong>@Model.Title</strong></p>
+    <p>@Model.Description</p>
+    <p>Действие необратимо.</p>
+
+    <form asp-controller="Recipes" asp-action="Delete" asp-route-id="@Model.RecipeId" method="post">
+        <button type="submit" class="btn btn-blue">Удалить</button>
+        <a asp-action="Index">Отмена</a>
+    </form>
+</div>
