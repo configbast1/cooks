@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Кулинарная анкета" xml:space="preserve"><value>Кулинарная анкета</value></data>
+  <data name="Спасибо за ответы!" xml:space="preserve"><value>Спасибо за ответы!</value></data>
+  <data name="Мы учтём ваши предпочтения и будем подбирать рецепты точнее." xml:space="preserve"><value>Мы учтём ваши предпочтения и будем подбирать рецепты точнее.</value></data>
+  <data name="На главную" xml:space="preserve"><value>На главную</value></data>
+  <data name="Расскажите о своей готовке" xml:space="preserve"><value>Расскажите о своей готовке</value></data>
+  <data name="Анкета необязательна. Укажите email, с которым регистрировались, — ответы привяжутся к вашему профилю." xml:space="preserve"><value>Анкета необязательна. Укажите email, с которым регистрировались, — ответы привяжутся к вашему профилю.</value></data>
+  <data name="Опыт" xml:space="preserve"><value>Опыт</value></data>
+  <data name="Уровень готовки" xml:space="preserve"><value>Уровень готовки</value></data>
+  <data name="Не указывать" xml:space="preserve"><value>Не указывать</value></data>
+  <data name="Как часто готовите" xml:space="preserve"><value>Как часто готовите</value></data>
+  <data name="Время на одно блюдо" xml:space="preserve"><value>Время на одно блюдо</value></data>
+  <data name="Тип питания" xml:space="preserve"><value>Тип питания</value></data>
+  <data name="Аллергии и нелюбимые продукты" xml:space="preserve"><value>Аллергии и нелюбимые продукты</value></data>
+  <data name="Предпочтения" xml:space="preserve"><value>Предпочтения</value></data>
+  <data name="Что вам интересно" xml:space="preserve"><value>Что вам интересно</value></data>
+  <data name="Кухонная техника" xml:space="preserve"><value>Кухонная техника</value></data>
+  <data name="О себе" xml:space="preserve"><value>О себе</value></data>
+  <data name="Отправить анкету" xml:space="preserve"><value>Отправить анкету</value></data>
+  <data name="Все данные хранятся в безопасности." xml:space="preserve"><value>Все данные хранятся в безопасности.</value></data>
+</root>

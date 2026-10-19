@@ -1,9 +1,10 @@
-﻿@using System.Text.Json
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@using System.Text.Json
 @using System.Text.Json.Serialization
 @model List<Recipe>
 
 @{
-    ViewData["Title"] = "Рецепти";
+    ViewData["Title"] = Localizer["Рецепти"].Value;
 }
 
 <!DOCTYPE html>
@@ -18,17 +19,6 @@
     <main class="container">
             <header class="site-header">
         <div class="wrap">
-            <a class="logo" href="/">
-                <span class="logo-mark" aria-hidden="true"><i></i></span>
-                Recipe.Site
-            </a>
-
-            <nav class="nav" aria-label="Головна">
-                <a href="/">Головна</a>
-                <a href="/Blogs">Блог</a>
-                <a href="/Recipes">Рецепти</a>
-                <a class="btn btn-blue" href="#">Зареєструватися</a>
-            </nav>
         </div>
     </header>
         <!-- =========================
@@ -36,11 +26,11 @@
          ========================= -->
         <header class="page-header">
             <div>
-                <h1>Рецепти</h1>
-                <p class="subtitle">Створюйте, зберігайте та переглядайте власні рецепти.</p>
+                <h1>@Localizer["Рецепти"]</h1>
+                <p class="subtitle">@Localizer["Створюйте, зберігайте та переглядайте власні рецепти."]</p>
             </div>
 
-            <a href="#create-recipe" class="button button-primary">+ Додати рецепт</a>
+            <a href="#create-recipe" class="button button-primary">@Localizer["+ Додати рецепт"]</a>
         </header>
 
         <!-- =========================
@@ -50,8 +40,8 @@
 
             <div class="section-header">
                 <div>
-                    <h2>Додати рецепт</h2>
-                    <p>Заповніть інформацію про страву.</p>
+                    <h2>@Localizer["Додати рецепт"]</h2>
+                    <p>@Localizer["Заповніть інформацію про страву."]</p>
                 </div>
             </div>
 
@@ -67,27 +57,27 @@
                  ОСНОВНА ІНФОРМАЦІЯ
                  ========================= -->
                 <div class="form-section">
-                    <h3>Основна інформація</h3>
+                    <h3>@Localizer["Основна інформація"]</h3>
 
                     <div class="form-grid">
 
                         <div class="field field-full">
-                            <label for="Title">Назва рецепту</label>
+                            <label for="Title">@Localizer["Назва рецепту"]</label>
                             <input id="Title" name="Title" type="text" maxlength="200" required
                                    placeholder="Наприклад: Вареники з картоплею" />
                         </div>
 
-                        <!-- Фото -->
+                        <!-- @Localizer["Фото"] -->
                         <div class="field field-full">
-                            <label for="image-input">Фото</label>
+                            <label for="image-input">@Localizer["Фото"]</label>
                             <input id="image-input" type="url" placeholder="https://example.com/photo.jpg" />
-                            <small>Вставте посилання на фотографію страви.</small>
+                            <small>@Localizer["Вставте посилання на фотографію страви."]</small>
                             <div id="image-preview" class="image-preview"></div>
                         </div>
 
-                        <!-- Історія -->
+                        <!-- @Localizer["Історія"] -->
                         <div class="field field-full">
-                            <label for="story-input">Історія</label>
+                            <label for="story-input">@Localizer["Історія"]</label>
                             <textarea id="story-input" rows="5" placeholder="Розкажіть історію цієї страви..."></textarea>
                         </div>
 
@@ -98,58 +88,58 @@
                  КАТЕГОРІЇ
                  ========================= -->
                 <div class="form-section">
-                    <h3>Категорії</h3>
+                    <h3>@Localizer["Категорії"]</h3>
 
                     <div class="category-grid">
 
                         <!-- Країна -->
                         <div class="field">
-                            <label for="country-input">Країна / народ</label>
+                            <label for="country-input">@Localizer["Країна / народ"]</label>
                             <select id="country-input">
-                                <option value="">Оберіть країну</option>
-                                <option value="Україна">🇺🇦 Україна</option>
-                                <option value="Італія">🇮🇹 Італія</option>
-                                <option value="Франція">🇫🇷 Франція</option>
-                                <option value="Німеччина">🇩🇪 Німеччина</option>
-                                <option value="Греція">🇬🇷 Греція</option>
-                                <option value="Японія">🇯🇵 Японія</option>
-                                <option value="Мексика">🇲🇽 Мексика</option>
-                                <option value="США">🇺🇸 США</option>
-                                <option value="Інше">Інше</option>
+                                <option value="">@Localizer["Оберіть країну"]</option>
+                                <option value="Україна">@Localizer["🇺🇦 Україна"]</option>
+                                <option value="Італія">@Localizer["🇮🇹 Італія"]</option>
+                                <option value="Франція">@Localizer["🇫🇷 Франція"]</option>
+                                <option value="Німеччина">@Localizer["🇩🇪 Німеччина"]</option>
+                                <option value="Греція">@Localizer["🇬🇷 Греція"]</option>
+                                <option value="Японія">@Localizer["🇯🇵 Японія"]</option>
+                                <option value="Мексика">@Localizer["🇲🇽 Мексика"]</option>
+                                <option value="США">@Localizer["🇺🇸 США"]</option>
+                                <option value="@Localizer["Інше"]">@Localizer["Інше"]</option>
                             </select>
                         </div>
 
                         <!-- Вид блюда -->
                         <div class="field">
-                            <label for="dish-type-input">Вид страви</label>
+                            <label for="dish-type-input">@Localizer["Вид страви"]</label>
                             <select id="dish-type-input">
-                                <option value="">Оберіть вид</option>
-                                <option value="Закуска">Закуска</option>
-                                <option value="Салат">Салат</option>
-                                <option value="Суп">Суп</option>
-                                <option value="Основна страва">Основна страва</option>
-                                <option value="Гарнір">Гарнір</option>
-                                <option value="Десерт">Десерт</option>
-                                <option value="Напій">Напій</option>
-                                <option value="Хлібобулочне">Хлібобулочне</option>
-                                <option value="Випічка">Випічка</option>
-                                <option value="Соус">Соус</option>
-                                <option value="Інше">Інше</option>
+                                <option value="">@Localizer["Оберіть вид"]</option>
+                                <option value="@Localizer["Закуска"]">@Localizer["Закуска"]</option>
+                                <option value="@Localizer["Салат"]">@Localizer["Салат"]</option>
+                                <option value="@Localizer["Суп"]">@Localizer["Суп"]</option>
+                                <option value="@Localizer["Основна страва"]">@Localizer["Основна страва"]</option>
+                                <option value="@Localizer["Гарнір"]">@Localizer["Гарнір"]</option>
+                                <option value="@Localizer["Десерт"]">@Localizer["Десерт"]</option>
+                                <option value="@Localizer["Напій"]">@Localizer["Напій"]</option>
+                                <option value="@Localizer["Хлібобулочне"]">@Localizer["Хлібобулочне"]</option>
+                                <option value="@Localizer["Випічка"]">@Localizer["Випічка"]</option>
+                                <option value="@Localizer["Соус"]">@Localizer["Соус"]</option>
+                                <option value="@Localizer["Інше"]">@Localizer["Інше"]</option>
                             </select>
                         </div>
 
-                        <!-- Дієта -->
+                        <!-- @Localizer["Дієта"] -->
                         <div class="field">
-                            <label for="diet-input">Дієта</label>
+                            <label for="diet-input">@Localizer["Дієта"]</label>
                             <select id="diet-input">
-                                <option value="">Оберіть дієту</option>
-                                <option value="Без дієти">Без дієти</option>
-                                <option value="Вегетаріанська">Вегетаріанська</option>
-                                <option value="Веганська">Веганська</option>
-                                <option value="Безглютенова">Безглютенова</option>
-                                <option value="Кето">Кето</option>
-                                <option value="Пісна">Пісна</option>
-                                <option value="Низьковуглеводна">Низьковуглеводна</option>
+                                <option value="">@Localizer["Оберіть дієту"]</option>
+                                <option value="@Localizer["Без дієти"]">@Localizer["Без дієти"]</option>
+                                <option value="@Localizer["Вегетаріанська"]">@Localizer["Вегетаріанська"]</option>
+                                <option value="@Localizer["Веганська"]">@Localizer["Веганська"]</option>
+                                <option value="@Localizer["Безглютенова"]">@Localizer["Безглютенова"]</option>
+                                <option value="@Localizer["Кето"]">@Localizer["Кето"]</option>
+                                <option value="@Localizer["Пісна"]">@Localizer["Пісна"]</option>
+                                <option value="@Localizer["Низьковуглеводна"]">@Localizer["Низьковуглеводна"]</option>
                             </select>
                         </div>
 
@@ -162,11 +152,11 @@
                 <div class="form-section">
                     <div class="section-header-row">
                         <div>
-                            <h3>Інгредієнти</h3>
-                            <p>Для кожного продукту можна окремо вказати кількість.</p>
+                            <h3>@Localizer["Інгредієнти"]</h3>
+                            <p>@Localizer["Для кожного продукту можна окремо вказати кількість."]</p>
                         </div>
                         <button type="button" class="button button-secondary" onclick="addIngredient()">
-                            + Додати інгредієнт
+                            @Localizer["+ Додати інгредієнт"]
                         </button>
                     </div>
 
@@ -186,11 +176,11 @@
                 <div class="form-section">
                     <div class="section-header-row">
                         <div>
-                            <h3>Приготування</h3>
-                            <p>Для кожного кроку можна встановити таймер.</p>
+                            <h3>@Localizer["Приготування"]</h3>
+                            <p>@Localizer["Для кожного кроку можна встановити таймер."]</p>
                         </div>
                         <button type="button" class="button button-secondary" onclick="addStep()">
-                            + Додати крок
+                            @Localizer["+ Додати крок"]
                         </button>
                     </div>
 
@@ -200,9 +190,9 @@
                             <div class="step-fields">
                                 <textarea class="step-text" rows="3" required placeholder="Опишіть дію..."></textarea>
                                 <div class="timer-input">
-                                    <label>Таймер</label>
+                                    <label>@Localizer["Таймер"]</label>
                                     <input type="number" class="step-timer" min="0" value="0" placeholder="Секунди" />
-                                    <span>секунд</span>
+                                    <span>@Localizer["секунд"]</span>
                                 </div>
                             </div>
                             <button type="button" class="remove-button" onclick="removeStep(this)">×</button>
@@ -214,16 +204,16 @@
                  NOTES
                  ========================= -->
                 <div class="form-section">
-                    <h3>По скриптум</h3>
+                    <h3>@Localizer["По скриптум"]</h3>
                     <div class="field">
-                        <label for="notes-input">Додаткові примітки</label>
+                        <label for="notes-input">@Localizer["Додаткові примітки"]</label>
                         <textarea id="notes-input" rows="5"
                                   placeholder="Поради, заміни продуктів, особливості приготування..."></textarea>
                     </div>
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="button button-primary">Зберегти рецепт</button>
+                    <button type="submit" class="button button-primary">@Localizer["Зберегти рецепт"]</button>
                 </div>
 
             </form>
@@ -236,14 +226,14 @@
 
             <div class="section-header">
                 <div>
-                    <h2>Усі рецепти</h2>
-                    <p>Рецепти, збережені у Firebase.</p>
+                    <h2>@Localizer["Усі рецепти"]</h2>
+                    <p>@Localizer["Рецепти, збережені у Firebase."]</p>
                 </div>
             </div>
 
             @if (Model == null || Model.Count == 0)
             {
-                <div class="panel empty">Поки що рецептів немає.</div>
+                <div class="panel empty">@Localizer["Поки що рецептів немає."]</div>
             }
             else
             {
@@ -352,13 +342,13 @@
 
                                 <div class="card-actions">
                                     <button type="button" class="button button-primary" onclick="openRecipe('@recipe.RecipeId')">
-                                        Переглянути
+                                        @Localizer["Переглянути"]
                                     </button>
 
                                     <form method="post" action="@Url.Action("Delete", "Recipes", new { id = recipe.RecipeId })"
                                           onsubmit="return confirm('Ви точно хочете видалити цей рецепт?');">
                                         @Html.AntiForgeryToken()
-                                        <button type="submit" class="button button-danger">Видалити</button>
+                                        <button type="submit" class="button button-danger">@Localizer["Видалити"]</button>
                                     </form>
                                 </div>
 
@@ -395,18 +385,18 @@
 
                                 <h1>@recipe.Title</h1>
 
-                                <!-- Історія -->
+                                <!-- @Localizer["Історія"] -->
                                 @if (!string.IsNullOrWhiteSpace(story))
                                 {
                                     <section class="details-section">
-                                        <h2>Історія</h2>
+                                        <h2>@Localizer["Історія"]</h2>
                                         <p class="details-text">@story</p>
                                     </section>
                                 }
 
-                                <!-- Інгредієнти -->
+                                <!-- @Localizer["Інгредієнти"] -->
                                 <section class="details-section">
-                                    <h2>Інгредієнти</h2>
+                                    <h2>@Localizer["Інгредієнти"]</h2>
 
                                     @if (ingredients.Count > 0)
                                     {
@@ -422,13 +412,13 @@
                                     }
                                     else
                                     {
-                                        <p>Інгредієнти не вказані.</p>
+                                        <p>@Localizer["Інгредієнти не вказані."]</p>
                                     }
                                 </section>
 
-                                <!-- Приготування -->
+                                <!-- @Localizer["Приготування"] -->
                                 <section class="details-section">
-                                    <h2>Приготування</h2>
+                                    <h2>@Localizer["Приготування"]</h2>
 
                                     @if (steps.Count > 0)
                                     {
@@ -447,10 +437,10 @@
                                                                     @TimeSpan.FromSeconds(step.TimerSeconds).ToString(@"mm\:ss")
                                                                 </div>
                                                                 <button type="button" class="button button-primary timer-start">
-                                                                    ▶ Запустити
+                                                                    @Localizer["▶ Запустити"]
                                                                 </button>
                                                                 <button type="button" class="button button-secondary timer-reset">
-                                                                    Скинути
+                                                                    @Localizer["Скинути"]
                                                                 </button>
                                                             </div>
                                                         }
@@ -461,15 +451,15 @@
                                     }
                                     else
                                     {
-                                        <p>Кроки приготування не вказані.</p>
+                                        <p>@Localizer["Кроки приготування не вказані."]</p>
                                     }
                                 </section>
 
-                                <!-- По скриптум -->
+                                <!-- @Localizer["По скриптум"] -->
                                 @if (!string.IsNullOrWhiteSpace(notes))
                                 {
                                     <section class="details-section notes-section">
-                                        <h2>По скриптум</h2>
+                                        <h2>@Localizer["По скриптум"]</h2>
                                         <p class="details-text">@notes</p>
                                     </section>
                                 }
@@ -532,9 +522,9 @@
                         <div class="step-fields">
                             <textarea class="step-text" rows="3" required placeholder="Опишіть дію..."></textarea>
                             <div class="timer-input">
-                                <label>Таймер</label>
+                                <label>@Localizer["Таймер"]</label>
                                 <input type="number" class="step-timer" min="0" value="0" placeholder="Секунди" />
-                                <span>секунд</span>
+                                <span>@Localizer["секунд"]</span>
                             </div>
                         </div>
                         <button type="button" class="remove-button" onclick="removeStep(this)">×</button>
@@ -716,7 +706,7 @@
 
                         remaining = originalSeconds;
                         display.textContent = formatTime(remaining);
-                        startButton.textContent = "▶ Запустити";
+                        startButton.textContent = "@Localizer["▶ Запустити"]";
                         timer.classList.remove("finished");
                     });
                 });

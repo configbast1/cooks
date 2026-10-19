@@ -29,7 +29,7 @@ public class FormController : Controller
     public IActionResult Index()
         => View("Form", new RegistrationViewModel());
 
-    [HttpPost]
+    [HttpPost("Form")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Register(
         RegistrationViewModel model,
@@ -51,6 +51,8 @@ public class FormController : Controller
         if (!ModelState.IsValid)
             return View("Form", model);
 
+
+
         try
         {
             if (await _store.EmailExistsAsync(model.Email, ct))
@@ -61,7 +63,6 @@ public class FormController : Controller
 
                 return View("Form", model);
             }
-
             var id = await _store.SaveAsync(model, ct);
 
             _logger.LogInformation(

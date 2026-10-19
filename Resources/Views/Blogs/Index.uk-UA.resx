@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Блоги" xml:space="preserve"><value>Блоги</value></data>
+  <data name="Додати блог" xml:space="preserve"><value>Додати блог</value></data>
+  <data name="Назва" xml:space="preserve"><value>Назва</value></data>
+  <data name="Опис" xml:space="preserve"><value>Опис</value></data>
+  <data name="Усі блоги" xml:space="preserve"><value>Усі блоги</value></data>
+  <data name="Поки що блогів немає." xml:space="preserve"><value>Поки що блогів немає.</value></data>
+  <data name="Редагувати" xml:space="preserve"><value>Редагувати</value></data>
+  <data name="Видалити" xml:space="preserve"><value>Видалити</value></data>
+  <data name="Зберегти зміни" xml:space="preserve"><value>Зберегти зміни</value></data>
+  <data name="Скасувати" xml:space="preserve"><value>Скасувати</value></data>
+  <data name="Введіть назву блогу" xml:space="preserve"><value>Введіть назву блогу</value></data>
+  <data name="Введіть текст блогу" xml:space="preserve"><value>Введіть текст блогу</value></data>
+</root>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Регистрация" xml:space="preserve"><value>Регистрация</value></data>
+  <data name="Введите данные для регистрации" xml:space="preserve"><value>Введите данные для регистрации</value></data>
+  <data name="Поля, отмеченные *, обязательны для заполнения." xml:space="preserve"><value>Поля, отмеченные *, обязательны для заполнения.</value></data>
+  <data name="О вас" xml:space="preserve"><value>О вас</value></data>
+  <data name="Имя *" xml:space="preserve"><value>Имя *</value></data>
+  <data name="Фамилия *" xml:space="preserve"><value>Фамилия *</value></data>
+  <data name="Дата рождения" xml:space="preserve"><value>Дата рождения</value></data>
+  <data name="Пол" xml:space="preserve"><value>Пол</value></data>
+  <data name="Не указывать" xml:space="preserve"><value>Не указывать</value></data>
+  <data name="Женский" xml:space="preserve"><value>Женский</value></data>
+  <data name="Мужской" xml:space="preserve"><value>Мужской</value></data>
+  <data name="Контакты" xml:space="preserve"><value>Контакты</value></data>
+  <data name="Телефон *" xml:space="preserve"><value>Телефон *</value></data>
+  <data name="Страна *" xml:space="preserve"><value>Страна *</value></data>
+  <data name="Город" xml:space="preserve"><value>Город</value></data>
+  <data name="Хочу получать новые рецепты на email" xml:space="preserve"><value>Хочу получать новые рецепты на email</value></data>
+  <data name="Я соглашаюсь с условиями обработки персональных данных *" xml:space="preserve"><value>Я соглашаюсь с условиями обработки персональных данных *</value></data>
+  <data name="Зарегистрироваться" xml:space="preserve"><value>Зарегистрироваться</value></data>
+  <data name="Все данные хранятся в безопасности." xml:space="preserve"><value>Все данные хранятся в безопасности.</value></data>
+  <data name="Любите готовить?" xml:space="preserve"><value>Любите готовить?</value></data>
+  <data name="Заполните кулинарную анкету" xml:space="preserve"><value>Заполните кулинарную анкету</value></data>
+  <data name="(по желанию)." xml:space="preserve"><value>(по желанию).</value></data>
+  <data name="Украина" xml:space="preserve"><value>Украина</value></data>
+  <data name="Польша" xml:space="preserve"><value>Польша</value></data>
+  <data name="Германия" xml:space="preserve"><value>Германия</value></data>
+  <data name="Чехия" xml:space="preserve"><value>Чехия</value></data>
+  <data name="Литва" xml:space="preserve"><value>Литва</value></data>
+  <data name="Другая" xml:space="preserve"><value>Другая</value></data>
+</root>

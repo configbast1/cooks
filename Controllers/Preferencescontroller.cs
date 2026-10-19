@@ -21,11 +21,10 @@ public class PreferencesController : Controller
 
     // GET /Preferences
     [HttpGet]
-    public IActionResult Index(string? email) =>
-        View(new CookingPreferencesViewModel { Email = email ?? "" });
+    public IActionResult Index()
+        => View("Index", new CookingPreferencesViewModel());
 
-    // POST /Preferences/Save
-    [HttpPost]
+    [HttpPost("Preferences")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Save(CookingPreferencesViewModel model, CancellationToken ct)
     {

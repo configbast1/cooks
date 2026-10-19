@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Previous" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Вперёд</value>
+  </data>
+  <data name="Blog" xml:space="preserve">
+    <value>Блог</value>
+  </data>
+  <data name="Recipes" xml:space="preserve">
+    <value>Рецепты</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Форма</value>
+  </data>
+  <data name="HeroImageAlt" xml:space="preserve">
+    <value>Бабушка натирает сыр на кухне</value>
+  </data>
+  <data name="HeroLine1" xml:space="preserve">
+    <value>Сайты с рецептами,</value>
+  </data>
+  <data name="HeroLine2" xml:space="preserve">
+    <value>рассылки и цифровые</value>
+  </data>
+  <data name="Cookbooks" xml:space="preserve">
+    <value>кулинарные книги</value>
+  </data>
+  <data name="FeatureRecipeEditor" xml:space="preserve">
+    <value>Редактор рецептов и CMS</value>
+  </data>
+  <data name="FeatureNewsletters" xml:space="preserve">
+    <value>Рассылки и подписки</value>
+  </data>
+  <data name="FeaturePaidAccess" xml:space="preserve">
+    <value>Платный доступ</value>
+  </data>
+  <data name="FeatureDomainDesign" xml:space="preserve">
+    <value>Свой домен и дизайн</value>
+  </data>
+  <data name="FeatureSeoHosting" xml:space="preserve">
+    <value>SEO и хостинг</value>
+  </data>
+  <data name="FeatureUnits" xml:space="preserve">
+    <value>US → метрическая система</value>
+  </data>
+  <data name="FeatureScaling" xml:space="preserve">
+    <value>Масштабирование порций</value>
+  </data>
+  <data name="FeatureTimers" xml:space="preserve">
+    <value>Таймеры</value>
+  </data>
+  <data name="FeatureComments" xml:space="preserve">
+    <value>Комментарии и оценки</value>
+  </data>
+  <data name="FeatureVideo" xml:space="preserve">
+    <value>Видео</value>
+  </data>
+  <data name="TagWebsite" xml:space="preserve">
+    <value>сайт</value>
+  </data>
+  <data name="TagNewsletter" xml:space="preserve">
+    <value>рассылка</value>
+  </data>
+  <data name="TagSubscriptions" xml:space="preserve">
+    <value>подписки</value>
+  </data>
+  <data name="TagDigitalCookbook" xml:space="preserve">
+    <value>цифровая кулинарная книга</value>
+  </data>
+  <data name="TagAds" xml:space="preserve">
+    <value>реклама</value>
+  </data>
+  <data name="IntroLead1" xml:space="preserve">
+    <value>Recipe.Site — платформа для авторов кулинарного контента: редактор рецептов,</value>
+  </data>
+  <data name="IntroLead2" xml:space="preserve">
+    <value>подписки, рассылки и платный доступ в одном месте.</value>
+  </data>
+  <data name="IntroLead3" xml:space="preserve">
+    <value>Это Substack и New York Times Cooking вместе.</value>
+  </data>
+  <data name="IntroAside1" xml:space="preserve">
+    <value>Для крупных авторов создаём индивидуальные решения и помогаем вести цифровой бизнес.</value>
+  </data>
+  <data name="IntroAside2" xml:space="preserve">
+    <value>Уже есть сайт? Добавим отдельные функции, например расширенные страницы рецептов, на ваш существующий сайт.</value>
+  </data>
+  <data name="Plans" xml:space="preserve">
+    <value>Тарифы</value>
+  </data>
+  <data name="PersonalPlan" xml:space="preserve">
+    <value>Личный</value>
+  </data>
+  <data name="UnlimitedRecipes" xml:space="preserve">
+    <value>Неограниченное количество рецептов</value>
+  </data>
+  <data name="PersonalDescription" xml:space="preserve">
+    <value>Для семейных рецептов и личных подборок.</value>
+  </data>
+  <data name="Example" xml:space="preserve">
+    <value>Пример</value>
+  </data>
+  <data name="TryFree" xml:space="preserve">
+    <value>Попробовать бесплатно</value>
+  </data>
+  <data name="CreatorPlan" xml:space="preserve">
+    <value>Автор</value>
+  </data>
+  <data name="PaidAccessSubscriptions" xml:space="preserve">
+    <value>Платный доступ и подписки</value>
+  </data>
+  <data name="Newsletters" xml:space="preserve">
+    <value>Рассылки</value>
+  </data>
+  <data name="FontsColorsLogo" xml:space="preserve">
+    <value>Шрифты, цвета, логотип</value>
+  </data>
+  <data name="CommentsRatings" xml:space="preserve">
+    <value>Комментарии и оценки</value>
+  </data>
+  <data name="AdsVideo" xml:space="preserve">
+    <value>Реклама и видео</value>
+  </data>
+  <data name="CustomDomain" xml:space="preserve">
+    <value>Собственный домен</value>
+  </data>
+  <data name="ChoosePlan" xml:space="preserve">
+    <value>Выбрать тариф</value>
+  </data>
+  <data name="ProfessionalPlan" xml:space="preserve">
+    <value>Профессиональный</value>
+  </data>
+  <data name="CustomDesignPages" xml:space="preserve">
+    <value>Индивидуальный дизайн и страницы</value>
+  </data>
+  <data name="CustomFeatures" xml:space="preserve">
+    <value>Собственные функции</value>
+  </data>
+  <data name="PersonalSupport" xml:space="preserve">
+    <value>Персональная поддержка</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Связаться с нами</value>
+  </data>
+  <data name="PlanNote" xml:space="preserve">
+    <value>*Дополнительно 6% дохода от подписок и кулинарных книг, максимум $4 000 в месяц.</value>
+  </data>
+  <data name="DifferenceLead1" xml:space="preserve">
+    <value>Мы одинаково внимательно относимся к рецептам, дизайну и</value>
+  </data>
+  <data name="DifferenceLead2" xml:space="preserve">
+    <value>технологиям. Поэтому наши сайты и кулинарные книги работают лучше.</value>
+  </data>
+  <data name="DifferenceAside1" xml:space="preserve">
+    <value>В отличие от конструкторов сайтов (WordPress, Squarespace, Wix), мы созданы именно для рецептов</value>
+  </data>
+  <data name="DifferenceAside2" xml:space="preserve">
+    <value>и монетизации. Подписки, платный доступ и рассылки уже встроены — без плагинов.</value>
+  </data>
+  <data name="DifferenceAside3" xml:space="preserve">
+    <value>В отличие от контентных платформ (Instagram, Substack), у вас не профиль в чужой сети,</value>
+  </data>
+  <data name="DifferenceAside4" xml:space="preserve">
+    <value>а собственный сайт: вы контролируете и контент, и аудиторию.</value>
+  </data>
+  <data name="ReadBlog" xml:space="preserve">
+    <value>Читать в блоге</value>
+  </data>
+  <data name="ProjectUpdates" xml:space="preserve">
+    <value>Новости проекта</value>
+  </data>
+  <data name="UpdatesDescription" xml:space="preserve">
+    <value>Раз в несколько месяцев рассказываем о новых функциях и планах.</value>
+  </data>
+  <data name="YourEmail" xml:space="preserve">
+    <value>Ваша почта</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="Subscribe" xml:space="preserve">
+    <value>Подписаться</value>
+  </data>
+  <data name="FooterDescription" xml:space="preserve">
+    <value>платформа для авторов кулинарного контента</value>
+  </data>
+  <data name="GetStarted" xml:space="preserve">
+    <value>Начать</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>О нас</value>
+  </data>
+  <data name="Terms" xml:space="preserve">
+    <value>Условия</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Сайты с рецептами, рассылки и цифровые кулинарные книги для авторов.</value>
+  </data>
+  <data name="Technology" xml:space="preserve">
+    <value>технологиям</value>
+  </data>
+</root>

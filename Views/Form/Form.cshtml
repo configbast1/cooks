@@ -1,6 +1,7 @@
-﻿@model Project001.Models.RegistrationViewModel
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@model Project001.Models.RegistrationViewModel
 @{
-    ViewData["Title"] = "Регистрация";
+    ViewData["Title"] = Localizer["Регистрация"].Value;
 
     string Err(string key) =>
         ViewData.ModelState.TryGetValue(key, out var entry) && entry.Errors.Count > 0
@@ -9,7 +10,7 @@
 
     string InvalidClass(string key) => Err(key).Length > 0 ? "input-validation-error" : "";
 
-    var countries = new[] { "Украина", "Польша", "Германия", "Чехия", "Литва", "Другая" };
+    var countries = new[] { Localizer["Украина"].Value, Localizer["Польша"].Value, Localizer["Германия"].Value, Localizer["Чехия"].Value, Localizer["Литва"].Value, Localizer["Другая"].Value };
 }
 
 <link rel="stylesheet" href="~/css/form.css" asp-append-version="true" />
@@ -18,28 +19,28 @@
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <a class="modal-close" href="@Url.Action("Index", "Home")" aria-label="Закрыть">&times;</a>
 
-        <h2 id="modalTitle">Введите данные для регистрации</h2>
-        <p class="modal-sub">Поля, отмеченные *, обязательны для заполнения.</p>
+        <h2 id="modalTitle">@Localizer["Введите данные для регистрации"]</h2>
+        <p class="modal-sub">@Localizer["Поля, отмеченные *, обязательны для заполнения."]</p>
 
         @if (Err("").Length > 0)
         {
             <div class="form-alert" role="alert">@Err("")</div>
         }
-
-        <form id="regForm" asp-controller="Form" asp-action="Register" method="post" novalidate>
+<form id="prefForm" asp-controller="Preferences" asp-action="Index" method="post" novalidate>
+    @Html.AntiForgeryToken()
 
             <fieldset class="group">
-                <legend>О вас</legend>
+                <legend>@Localizer["О вас"]</legend>
 
                 <div class="row">
                     <div class="field">
-                        <label for="name">Имя *</label>
+                        <label for="name">@Localizer["Имя *"]</label>
                         <input id="name" name="name" type="text" placeholder="Ваше имя" maxlength="50"
                                autocomplete="given-name" value="@Model.Name" class="@InvalidClass("Name")" />
                         <span class="error" data-error-for="name">@Err("Name")</span>
                     </div>
                     <div class="field">
-                        <label for="lastName">Фамилия *</label>
+                        <label for="lastName">@Localizer["Фамилия *"]</label>
                         <input id="lastName" name="lastName" type="text" placeholder="Ваша фамилия" maxlength="50"
                                autocomplete="family-name" value="@Model.LastName" class="@InvalidClass("LastName")" />
                         <span class="error" data-error-for="lastName">@Err("LastName")</span>
@@ -48,25 +49,25 @@
 
                 <div class="row">
                     <div class="field">
-                        <label for="birthDate">Дата рождения</label>
+                        <label for="birthDate">@Localizer["Дата рождения"]</label>
                         <input id="birthDate" name="birthDate" type="date" max="@DateTime.Today.ToString("yyyy-MM-dd")"
                                autocomplete="bday" value="@(Model.BirthDate?.ToString("yyyy-MM-dd"))"
                                class="@InvalidClass("BirthDate")" />
                         <span class="error" data-error-for="birthDate">@Err("BirthDate")</span>
                     </div>
                     <div class="field">
-                        <label for="gender">Пол</label>
+                        <label for="gender">@Localizer["Пол"]</label>
                         <select id="gender" name="gender">
-                            <option value="">Не указывать</option>
-                            <option value="Женский" selected="@(Model.Gender == "Женский")">Женский</option>
-                            <option value="Мужской" selected="@(Model.Gender == "Мужской")">Мужской</option>
+                            <option value="">@Localizer["Не указывать"]</option>
+                            <option value="@Localizer["Женский"]" selected="@(Model.Gender == "Женский")">@Localizer["Женский"]</option>
+                            <option value="@Localizer["Мужской"]" selected="@(Model.Gender == "Мужской")">@Localizer["Мужской"]</option>
                         </select>
                     </div>
                 </div>
             </fieldset>
 
             <fieldset class="group">
-                <legend>Контакты</legend>
+                <legend>@Localizer["Контакты"]</legend>
 
                 <div class="field">
                     <label for="email">Email *</label>
@@ -76,7 +77,7 @@
                 </div>
 
                 <div class="field">
-                    <label for="phone">Телефон *</label>
+                    <label for="phone">@Localizer["Телефон *"]</label>
                     <input id="phone" name="phone" type="tel" placeholder="+380..." inputmode="tel"
                            autocomplete="tel" value="@Model.Phone" class="@InvalidClass("Phone")" />
                     <span class="error" data-error-for="phone">@Err("Phone")</span>
@@ -84,7 +85,7 @@
 
                 <div class="row">
                     <div class="field">
-                        <label for="country">Страна *</label>
+                        <label for="country">@Localizer["Страна *"]</label>
                         <select id="country" name="country" autocomplete="country-name">
                             @foreach (var c in countries)
                             {
@@ -94,7 +95,7 @@
                         <span class="error" data-error-for="country">@Err("Country")</span>
                     </div>
                     <div class="field">
-                        <label for="city">Город</label>
+                        <label for="city">@Localizer["Город"]</label>
                         <input id="city" name="city" type="text" placeholder="Ваш город" maxlength="80"
                                autocomplete="address-level2" value="@Model.City" class="@InvalidClass("City")" />
                         <span class="error" data-error-for="city">@Err("City")</span>
@@ -105,24 +106,26 @@
             <div class="field field-check">
                 <label class="check">
                     <input id="newsletter" name="newsletter" type="checkbox" value="true" checked="@Model.Newsletter" />
-                    <span>Хочу получать новые рецепты на email</span>
+                    <span>@Localizer["Хочу получать новые рецепты на email"]</span>
                 </label>
             </div>
 
             <div class="field field-check">
                 <label class="check">
                     <input id="agreement" name="agreement" type="checkbox" value="true" checked="@Model.Agreement" />
-                    <span>Я соглашаюсь с условиями обработки персональных данных *</span>
+                    <span>@Localizer["Я соглашаюсь с условиями обработки персональных данных *"]</span>
                 </label>
                 <span class="error" data-error-for="agreement">@Err("Agreement")</span>
             </div>
 
-            <button type="submit" class="btn btn-black" id="submitBtn">Зарегистрироваться</button>
+<button type="submit" class="btn btn-black" id="submitBtn">
+    @Localizer["Зарегистрироваться"]
+</button>
         </form>
 
-        <p class="modal-note">Все данные хранятся в безопасности.</p>
+        <p class="modal-note">@Localizer["Все данные хранятся в безопасности."]</p>
         <p class="modal-note modal-note-tight">
-            Любите готовить? <a class="text-link" href="@Url.Action("Index", "Preferences")">Заполните кулинарную анкету</a> (по желанию).
+            @Localizer["Любите готовить?"] <a class="text-link" href="@Url.Action("Index", "Preferences")">@Localizer["Заполните кулинарную анкету"]</a> @Localizer["(по желанию)."]
         </p>
     </div>
 </div>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Рецепти" xml:space="preserve"><value>Рецепти</value></data>
+  <data name="Створюйте, зберігайте та переглядайте власні рецепти." xml:space="preserve"><value>Створюйте, зберігайте та переглядайте власні рецепти.</value></data>
+  <data name="+ Додати рецепт" xml:space="preserve"><value>+ Додати рецепт</value></data>
+  <data name="Додати рецепт" xml:space="preserve"><value>Додати рецепт</value></data>
+  <data name="Заповніть інформацію про страву." xml:space="preserve"><value>Заповніть інформацію про страву.</value></data>
+  <data name="Основна інформація" xml:space="preserve"><value>Основна інформація</value></data>
+  <data name="Назва рецепту" xml:space="preserve"><value>Назва рецепту</value></data>
+  <data name="Фото" xml:space="preserve"><value>Фото</value></data>
+  <data name="Вставте посилання на фотографію страви." xml:space="preserve"><value>Вставте посилання на фотографію страви.</value></data>
+  <data name="Історія" xml:space="preserve"><value>Історія</value></data>
+  <data name="Категорії" xml:space="preserve"><value>Категорії</value></data>
+  <data name="Країна / народ" xml:space="preserve"><value>Країна / народ</value></data>
+  <data name="Оберіть країну" xml:space="preserve"><value>Оберіть країну</value></data>
+  <data name="🇺🇦 Україна" xml:space="preserve"><value>🇺🇦 Україна</value></data>
+  <data name="🇮🇹 Італія" xml:space="preserve"><value>🇮🇹 Італія</value></data>
+  <data name="🇫🇷 Франція" xml:space="preserve"><value>🇫🇷 Франція</value></data>
+  <data name="🇩🇪 Німеччина" xml:space="preserve"><value>🇩🇪 Німеччина</value></data>
+  <data name="🇬🇷 Греція" xml:space="preserve"><value>🇬🇷 Греція</value></data>
+  <data name="🇯🇵 Японія" xml:space="preserve"><value>🇯🇵 Японія</value></data>
+  <data name="🇲🇽 Мексика" xml:space="preserve"><value>🇲🇽 Мексика</value></data>
+  <data name="🇺🇸 США" xml:space="preserve"><value>🇺🇸 США</value></data>
+  <data name="Інше" xml:space="preserve"><value>Інше</value></data>
+  <data name="Вид страви" xml:space="preserve"><value>Вид страви</value></data>
+  <data name="Оберіть вид" xml:space="preserve"><value>Оберіть вид</value></data>
+  <data name="Закуска" xml:space="preserve"><value>Закуска</value></data>
+  <data name="Салат" xml:space="preserve"><value>Салат</value></data>
+  <data name="Суп" xml:space="preserve"><value>Суп</value></data>
+  <data name="Основна страва" xml:space="preserve"><value>Основна страва</value></data>
+  <data name="Гарнір" xml:space="preserve"><value>Гарнір</value></data>
+  <data name="Десерт" xml:space="preserve"><value>Десерт</value></data>
+  <data name="Напій" xml:space="preserve"><value>Напій</value></data>
+  <data name="Хлібобулочне" xml:space="preserve"><value>Хлібобулочне</value></data>
+  <data name="Випічка" xml:space="preserve"><value>Випічка</value></data>
+  <data name="Соус" xml:space="preserve"><value>Соус</value></data>
+  <data name="Дієта" xml:space="preserve"><value>Дієта</value></data>
+  <data name="Оберіть дієту" xml:space="preserve"><value>Оберіть дієту</value></data>
+  <data name="Без дієти" xml:space="preserve"><value>Без дієти</value></data>
+  <data name="Вегетаріанська" xml:space="preserve"><value>Вегетаріанська</value></data>
+  <data name="Веганська" xml:space="preserve"><value>Веганська</value></data>
+  <data name="Безглютенова" xml:space="preserve"><value>Безглютенова</value></data>
+  <data name="Кето" xml:space="preserve"><value>Кето</value></data>
+  <data name="Пісна" xml:space="preserve"><value>Пісна</value></data>
+  <data name="Низьковуглеводна" xml:space="preserve"><value>Низьковуглеводна</value></data>
+  <data name="Інгредієнти" xml:space="preserve"><value>Інгредієнти</value></data>
+  <data name="Для кожного продукту можна окремо вказати кількість." xml:space="preserve"><value>Для кожного продукту можна окремо вказати кількість.</value></data>
+  <data name="+ Додати інгредієнт" xml:space="preserve"><value>+ Додати інгредієнт</value></data>
+  <data name="Приготування" xml:space="preserve"><value>Приготування</value></data>
+  <data name="Для кожного кроку можна встановити таймер." xml:space="preserve"><value>Для кожного кроку можна встановити таймер.</value></data>
+  <data name="+ Додати крок" xml:space="preserve"><value>+ Додати крок</value></data>
+  <data name="Таймер" xml:space="preserve"><value>Таймер</value></data>
+  <data name="секунд" xml:space="preserve"><value>секунд</value></data>
+  <data name="По скриптум" xml:space="preserve"><value>По скриптум</value></data>
+  <data name="Додаткові примітки" xml:space="preserve"><value>Додаткові примітки</value></data>
+  <data name="Зберегти рецепт" xml:space="preserve"><value>Зберегти рецепт</value></data>
+  <data name="Усі рецепти" xml:space="preserve"><value>Усі рецепти</value></data>
+  <data name="Рецепти, збережені у Firebase." xml:space="preserve"><value>Рецепти, збережені у Firebase.</value></data>
+  <data name="Поки що рецептів немає." xml:space="preserve"><value>Поки що рецептів немає.</value></data>
+  <data name="Переглянути" xml:space="preserve"><value>Переглянути</value></data>
+  <data name="Видалити" xml:space="preserve"><value>Видалити</value></data>
+  <data name="Інгредієнти не вказані." xml:space="preserve"><value>Інгредієнти не вказані.</value></data>
+  <data name="▶ Запустити" xml:space="preserve"><value>▶ Запустити</value></data>
+  <data name="Скинути" xml:space="preserve"><value>Скинути</value></data>
+  <data name="Кроки приготування не вказані." xml:space="preserve"><value>Кроки приготування не вказані.</value></data>
+</root>

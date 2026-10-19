@@ -1,4 +1,6 @@
-﻿@* Лендинг Recipe.Site. Стили: wwwroot/css/index.css *@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@* Лендинг Recipe.Site. Стили: wwwroot/css/index.css *@
 @{
     Layout = null;
     ViewData["Title"] = "Recipe.Site";
@@ -38,10 +40,10 @@
                     <span class="tag">@t</span>
                 }
                 <div class="sc-arrows">
-                    <button class="arrow" type="button" data-dir="prev" aria-label="Назад" disabled>
+                    <button class="arrow" type="button" data-dir="prev" aria-label="@Localizer["Previous"]" disabled>
                         <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5 5.5 9l5.5 5.5" /></svg>
                     </button>
-                    <button class="arrow" type="button" data-dir="next" aria-label="Вперед">
+                    <button class="arrow" type="button" data-dir="next" aria-label="@Localizer["Next"]">
                         <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5 12.5 9 7 14.5" /></svg>
                     </button>
                 </div>
@@ -67,11 +69,11 @@
     }
 }
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="@System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Сайти з рецептами, розсилки та цифрові кулінарні книги для авторів." />
+    <meta name="description" content="Сайти з рецептами, розсилки та цифрові @Localizer["Cookbooks"] для авторів." />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
 </head>
@@ -85,15 +87,15 @@
                 Recipe.Site
             </a>
             <nav class="nav" aria-label="Головна">
-                <a href="/Blogs">Блог</a>
-                <a href="/Recipes">Рецепти</a>
-<<<<<<< HEAD
-                <a href="/Form">Регестрация</a>
-                <a href="/Preferences">Форма</a>
+                <a href="/Blogs">@Localizer["Blog"]</a>
+                <a href="/Recipes">@Localizer["Recipes"]</a>
 
-=======
-                <a class="btn btn-blue" href="#">Зареєструватися</a>
->>>>>>> 9184bef4df053048476b6485cbfe5bf1b40b2701
+                <a href="/Form">@Localizer["Register"]</a>
+                <a href="/Preferences">@Localizer["Preferences"]</a>
+
+
+   
+
             </nav>
         </div>
     </header>
@@ -102,29 +104,29 @@
 
         @* ===== Головний екран ===== *@
         <section class="wrap hero">
-            <img class="hero-img" src="https://www.recipe.site/_next/image?url=https%3A%2F%2Fimg.recipe.site%2Fhomepage-hero-image-cooking%2520copy.webp%3Foptimizer%3Dimage&w=1200&q=75" alt="Бабуся тре сир на кухні" />
+            <img class="hero-img" src="https://www.recipe.site/_next/image?url=https%3A%2F%2Fimg.recipe.site%2Fhomepage-hero-image-cooking%2520copy.webp%3Foptimizer%3Dimage&w=1200&q=75" alt="@Localizer["HeroImageAlt"]" />
 
             <div class="hero-copy">
                 <h1>
-                    Сайти з рецептами,<br class="br-lg" />
-                    розсилки та цифрові<br class="br-lg" />
-                    кулінарні книги
+                    @Localizer["HeroLine1"]<br class="br-lg" />
+                    @Localizer["HeroLine2"]<br class="br-lg" />
+                    @Localizer["Cookbooks"]
                 </h1>
 
                 <div class="features">
                     <ul>
-                        <li>Редактор рецептів і CMS</li>
-                        <li>Розсилки та підписки</li>
-                        <li>Платний доступ</li>
-                        <li>Власний домен і дизайн</li>
-                        <li>SEO та хостинг</li>
+                        <li>@Localizer["FeatureRecipeEditor"]</li>
+                        <li>@Localizer["FeatureNewsletters"]</li>
+                        <li>@Localizer["FeaturePaidAccess"]</li>
+                        <li>@Localizer["FeatureDomainDesign"]</li>
+                        <li>@Localizer["FeatureSeoHosting"]</li>
                     </ul>
                     <ul>
-                        <li>US → метрична система</li>
-                        <li>Масштабування порцій</li>
-                        <li>Таймери</li>
-                        <li>Коментарі й оцінки</li>
-                        <li>Відео</li>
+                        <li>@Localizer["FeatureUnits"]</li>
+                        <li>@Localizer["FeatureScaling"]</li>
+                        <li>@Localizer["FeatureTimers"]</li>
+                        <li>@Localizer["FeatureComments"]</li>
+                        <li>@Localizer["FeatureVideo"]</li>
                     </ul>
                 </div>
             </div>
@@ -132,14 +134,17 @@
 
         @* ===== Приклади сайтів (дані — у масивах, розмітка — у Showcase) ===== *@
         @{
-            Showcase("h woo", null, new[] { "сайт", "розсилка", "підписки" }, new[]
+            Showcase(null, null, new[] { Localizer["TagWebsite"].Value, Localizer["TagNewsletter"].Value, Localizer["TagSubscriptions"].Value }, new[]
             {
-                ('v', "marketing_homepage_hwoo_01"), ('l', "marketing_homepage_hwoo_02"),
-                ('b', "marketing_homepage_hwoo_03"), ('l', "marketing_homepage_hwoo_04"),
-                ('l', "marketing_homepage_hwoo_05"), ('l', "marketing_homepage_hwoo_06")
-            });
+    ('v', "marketing_homepage_hwoo_01"),
+    ('l', "marketing_homepage_hwoo_02"),
+    ('b', "marketing_homepage_hwoo_03"),
+    ('l', "marketing_homepage_hwoo_04"),
+    ('l', "marketing_homepage_hwoo_05"),
+    ('l', "marketing_homepage_hwoo_06")
+});
 
-            Showcase("Katie Parla, Rome", null, new[] { "цифрова кулінарна книга" }, new[]
+            Showcase("Katie Parla, Rome", null, new[] { Localizer["TagDigitalCookbook"].Value }, new[]
             {
                 ('v', "marketing_homepage_rome_01"), ('l', "marketing_homepage_rome_02"),
                 ('b', "marketing_homepage_rome_03"), ('n', "marketing_homepage_rome_04"),
@@ -147,7 +152,7 @@
                 ('b', "marketing_homepage_rome_07")
             });
 
-            Showcase("Cheffin' with Zach", null, new[] { "сайт" }, new[]
+            Showcase("Cheffin' with Zach", null, new[] { Localizer["TagWebsite"].Value }, new[]
             {
                 ('v', "cheffinwithzach"), ('b', "marketing_homepage_cheffinwithzach_01"),
                 ('l', "marketing_homepage_cheffinwithzach_02"), ('l', "marketing_homepage_cheffinwithzach_03"),
@@ -161,9 +166,9 @@
             <div class="two-col">
                 <div>
                     <p class="lead">
-                        Recipe.Site — платформа для авторів кулінарного контенту: редактор рецептів,
-                        підписки, розсилки та платний доступ в одному місці.
-                        Це <em>Substack</em> і <em>New York Times Cooking</em> разом.
+                        @Localizer["IntroLead1"]
+                        @Localizer["IntroLead2"]
+                        @Localizer["IntroLead3"]
                     </p>
                     <video class="intro-video" controls muted playsinline preload="metadata">
                         <source src="@Vid("marketing_homepage_recipe_editor")" type="video/mp4">
@@ -171,21 +176,21 @@
                 </div>
 
                 <div class="aside">
-                    <p>Для великих авторів робимо індивідуальні рішення та допомагаємо вести цифровий бізнес.</p>
-                    <p>Вже є сайт? Додамо окремі функції, наприклад розширені сторінки рецептів, у ваш наявний сайт.</p>
+                    <p>@Localizer["IntroAside1"]</p>
+                    <p>@Localizer["IntroAside2"]</p>
                 </div>
             </div>
         </section>
 
         @{
-            Showcase("Krizkitch", "https://www.krizkitch.com/", new[] { "сайт", "розсилка", "підписки" }, new[]
+            Showcase("Krizkitch", "https://www.krizkitch.com/", new[] { Localizer["TagWebsite"].Value, Localizer["TagNewsletter"].Value, Localizer["TagSubscriptions"].Value }, new[]
             {
                 ('v', "marketing_homepage_krizkitch_01"), ('l', "marketing_homepage_krizkitch_02"),
                 ('b', "marketing_homepage_krizkitch_03"), ('l', "marketing_homepage_krizkitch_04"),
                 ('b', "marketing_homepage_krizkitch_05")
             });
 
-            Showcase("Mixtures, Community cookbook", "https://mixtures.recipe.site/", new[] { "цифрова кулінарна книга" }, new[]
+            Showcase("Mixtures, Community cookbook", "https://mixtures.recipe.site/", new[] { Localizer["TagDigitalCookbook"].Value }, new[]
             {
                 ('b', "marketing_homepage_mixtures_01"), ('l', "marketing_homepage_mixtures_02"),
                 ('b', "marketing_homepage_mixtures_03"), ('l', "marketing_homepage_mixtures_04"),
@@ -195,53 +200,53 @@
 
         @* ===== Тарифи ===== *@
         <section class="wrap block plans" id="plans">
-            <h2>Тарифи</h2>
+            <h2>@Localizer["Plans"]</h2>
 
             <div class="plan-grid">
                 <div class="plan">
-                    <h3>Особистий</h3>
+                    <h3>@Localizer["PersonalPlan"]</h3>
                     <p class="price">$4/місяць</p>
                     <ul>
-                        <li>Необмежена кількість рецептів</li>
+                        <li>@Localizer["UnlimitedRecipes"]</li>
                     </ul>
-                    <p class="desc">Для сімейних рецептів і особистих добірок.</p>
-                    <a class="example desc" href="#">Приклад</a>
-                    <div><a class="btn btn-black" href="#">Спробувати безкоштовно</a></div>
+                    <p class="desc">@Localizer["PersonalDescription"]</p>
+                    <a class="example desc" href="#">@Localizer["Example"]</a>
+                    <div><a class="btn btn-black" href="#">@Localizer["TryFree"]</a></div>
                 </div>
 
                 <div class="plan">
-                    <h3>Автор</h3>
+                    <h3>@Localizer["CreatorPlan"]</h3>
                     <p class="price">$32/місяць*</p>
                     <ul>
-                        <li>Платний доступ і підписки</li>
-                        <li>Розсилки</li>
-                        <li>Шрифти, кольори, логотип</li>
-                        <li>Коментарі та оцінки</li>
-                        <li>Реклама й відео</li>
-                        <li>Власний домен</li>
+                        <li>@Localizer["PaidAccessSubscriptions"]</li>
+                        <li>@Localizer["Newsletters"]</li>
+                        <li>@Localizer["FontsColorsLogo"]</li>
+                        <li>@Localizer["CommentsRatings"]</li>
+                        <li>@Localizer["AdsVideo"]</li>
+                        <li>@Localizer["CustomDomain"]</li>
                     </ul>
-                    <a class="example desc" href="#">Приклад</a>
-                    <div><a class="btn btn-black" href="#">Обрати тариф</a></div>
+                    <a class="example desc" href="#">@Localizer["Example"]</a>
+                    <div><a class="btn btn-black" href="#">@Localizer["ChoosePlan"]</a></div>
                 </div>
 
                 <div class="plan">
-                    <h3>Професійний</h3>
+                    <h3>@Localizer["ProfessionalPlan"]</h3>
                     <p class="price">$250–500/місяць*</p>
                     <ul>
-                        <li>Власний дизайн і сторінки</li>
-                        <li>Власні функції</li>
-                        <li>Персональна підтримка</li>
+                        <li>@Localizer["CustomDesignPages"]</li>
+                        <li>@Localizer["CustomFeatures"]</li>
+                        <li>@Localizer["PersonalSupport"]</li>
                     </ul>
-                    <a class="example desc" href="#">Приклад</a>
-                    <div><a class="btn btn-black" href="#">Зв'язатися з нами</a></div>
+                    <a class="example desc" href="#">@Localizer["Example"]</a>
+                    <div><a class="btn btn-black" href="#">@Localizer["ContactUs"]</a></div>
                 </div>
             </div>
 
-            <p class="note">*Додатково 6% від доходу з підписок і кулінарних книг, максимум $4 000 на місяць.</p>
+            <p class="note">@Localizer["PlanNote"]</p>
         </section>
 
         @{
-            Showcase("Ryan Nordheimer", "https://www.ryannordheimer.com/", new[] { "сайт", "реклама", "підписки" }, new[]
+            Showcase("Ryan Nordheimer", "https://www.ryannordheimer.com/", new[] { Localizer["TagWebsite"].Value, Localizer["TagAds"].Value, Localizer["TagSubscriptions"].Value }, new[]
             {
                 ('l', "marketing_homepage_ryannordheimer_01"), ('b', "marketing_homepage_ryannordheimer_02"),
                 ('l', "marketing_homepage_ryannordheimer_03"), ('l', "marketing_homepage_ryannordheimer_04")
@@ -253,32 +258,30 @@
             <div class="two-col">
                 <div>
                     <p class="lead">
-                        Ми однаково уважні до <strong>рецептів</strong>, <strong>дизайну</strong> та
-                        <strong>технологій</strong>. Тому наші сайти й кулінарні книги працюють краще.
+                        @Localizer["DifferenceLead1"]
+                        @Localizer["DifferenceLead2"]
                     </p>
                 </div>
 
                 <div class="aside">
                     <p>
-                        На відміну від <em>конструкторів сайтів</em> (WordPress, Squarespace, Wix), ми створені саме для рецептів
-                        і монетизації. Підписки, платний доступ і розсилки вже вбудовані, без плагінів.
+                        @Localizer["DifferenceAside1"] @Localizer["DifferenceAside2"]
                     </p>
                     <p>
-                        На відміну від <em>контентних платформ</em> (Instagram, Substack), у вас не профіль у чужій мережі,
-                        а власний сайт: ви контролюєте і контент, і аудиторію.
+                        @Localizer["DifferenceAside3"] @Localizer["DifferenceAside4"]
                     </p>
-                    <p><a href="#">Читати в блозі</a></p>
+                    <p><a href="#">@Localizer["ReadBlog"]</a></p>
                 </div>
             </div>
         </section>
 
         @* ===== Підписка на новини ===== *@
         <section class="wrap block updates">
-            <h2>Новини проєкту</h2>
-            <p>Раз на кілька місяців розповідаємо про нові функції та плани.</p>
+            <h2>@Localizer["ProjectUpdates"]</h2>
+            <p>@Localizer["UpdatesDescription"]</p>
             <form class="subscribe" action="#" method="post">
-                <input type="email" name="email" placeholder="Ваша пошта" aria-label="Електронна пошта" required />
-                <button type="submit">Підписатися</button>
+                <input type="email" name="email" placeholder="@Localizer["YourEmail"]" aria-label="@Localizer["EmailAddress"]" required />
+                <button type="submit">@Localizer["Subscribe"]</button>
             </form>
         </section>
     </main>
@@ -287,16 +290,16 @@
     <footer class="site-footer">
         <div class="wrap">
             <div>
-                <p><a href="~/">Recipe.Site</a> — платформа для авторів кулінарного контенту</p>
+                <p><a href="~/">Recipe.Site</a> — @Localizer["FooterDescription"]</p>
                 <p class="fine">Відгуки: alex@@recipe.site</p>
                 <p>© 2026 Recipe.Site</p>
             </div>
             <nav class="footer-links" aria-label="Підвал сайту">
-                <a href="#">Почати</a>
-                <a href="#plans">Тарифи</a>
-                <a href="#about">Про нас</a>
-                <a href="/Blogs">Блог</a>
-                <a href="#">Умови</a>
+                <a href="#">@Localizer["GetStarted"]</a>
+                <a href="#plans">@Localizer["Plans"]</a>
+                <a href="#about">@Localizer["AboutUs"]</a>
+                <a href="/Blogs">@Localizer["Blog"]</a>
+                <a href="#">@Localizer["Terms"]</a>
             </nav>
         </div>
     </footer>

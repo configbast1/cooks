@@ -1,7 +1,8 @@
-﻿@model Project001.Controllers.CookingPreferencesViewModel
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@model Project001.Controllers.CookingPreferencesViewModel
 @using Project001.Controllers
 @{
-    ViewData["Title"] = "Кулинарная анкета";
+        ViewData["Title"] = Localizer["Кулинарная анкета"];
 
     string Err(string key) =>
         ViewData.ModelState.TryGetValue(key, out var entry) && entry.Errors.Count > 0
@@ -21,18 +22,18 @@
 
         @if (saved)
         {
-            <div class="form-success" role="status">
+            <div class="    -success" role="status">
                 <div class="form-success__icon" aria-hidden="true">&#10003;</div>
-                <h2 id="modalTitle">Спасибо за ответы!</h2>
-                <p>Мы учтём ваши предпочтения и будем подбирать рецепты точнее.</p>
-                <a class="btn btn-black" href="@Url.Action("Index", "Home")">На главную</a>
+                <h2 id="modalTitle">@Localizer["Спасибо за ответы!"]</h2>
+                <p>@Localizer["Мы учтём ваши предпочтения и будем подбирать рецепты точнее."]</p>
+                <a class="btn btn-black" href="@Url.Action("Index", "Home")">@Localizer["На главную"]</a>
             </div>
         }
         else
         {
-            <h2 id="modalTitle">Расскажите о своей готовке</h2>
+            <h2 id="modalTitle">@Localizer["Расскажите о своей готовке"]</h2>
             <p class="modal-sub">
-                Анкета необязательна. Укажите email, с которым регистрировались, — ответы привяжутся к вашему профилю.
+                @Localizer["Анкета необязательна. Укажите email, с которым регистрировались, — ответы привяжутся к вашему профилю."]
             </p>
 
             @if (Err("").Length > 0)
@@ -40,7 +41,12 @@
                 <div class="form-alert" role="alert">@Err("")</div>
             }
 
-            <form id="prefForm" asp-controller="Preferences" asp-action="Save" method="post" novalidate>
+          <form id="prefForm"
+      asp-controller="Preferences"
+      asp-action="Index"
+      method="post"
+      novalidate>
+    @Html.AntiForgeryToken()
 
                 <div class="field">
                     <label for="email">Email *</label>
@@ -50,13 +56,13 @@
                 </div>
 
                 <fieldset class="group">
-                    <legend>Опыт</legend>
+                    <legend>@Localizer["Опыт"]</legend>
 
                     <div class="row">
                         <div class="field">
-                            <label for="cookingLevel">Уровень готовки</label>
+                            <label for="cookingLevel">@Localizer["Уровень готовки"]</label>
                             <select id="cookingLevel" name="cookingLevel">
-                                <option value="">Не указывать</option>
+                                <option value="">@Localizer["Не указывать"]</option>
                                 @foreach (var o in CookingPreferencesViewModel.Levels)
                                 {
                                     <option value="@o" selected="@(Model.CookingLevel == o)">@o</option>
@@ -65,9 +71,9 @@
                             <span class="error" data-error-for="cookingLevel">@Err("CookingLevel")</span>
                         </div>
                         <div class="field">
-                            <label for="frequency">Как часто готовите</label>
+                            <label for="frequency">@Localizer["Как часто готовите"]</label>
                             <select id="frequency" name="frequency">
-                                <option value="">Не указывать</option>
+                                <option value="">@Localizer["Не указывать"]</option>
                                 @foreach (var o in CookingPreferencesViewModel.Frequencies)
                                 {
                                     <option value="@o" selected="@(Model.Frequency == o)">@o</option>
@@ -79,9 +85,9 @@
 
                     <div class="row">
                         <div class="field">
-                            <label for="cookingTime">Время на одно блюдо</label>
+                            <label for="cookingTime">@Localizer["Время на одно блюдо"]</label>
                             <select id="cookingTime" name="cookingTime">
-                                <option value="">Не указывать</option>
+                                <option value="">@Localizer["Не указывать"]</option>
                                 @foreach (var o in CookingPreferencesViewModel.Times)
                                 {
                                     <option value="@o" selected="@(Model.CookingTime == o)">@o</option>
@@ -90,9 +96,9 @@
                             <span class="error" data-error-for="cookingTime">@Err("CookingTime")</span>
                         </div>
                         <div class="field">
-                            <label for="diet">Тип питания</label>
+                            <label for="diet">@Localizer["Тип питания"]</label>
                             <select id="diet" name="diet">
-                                <option value="">Не указывать</option>
+                                <option value="">@Localizer["Не указывать"]</option>
                                 @foreach (var o in CookingPreferencesViewModel.Diets)
                                 {
                                     <option value="@o" selected="@(Model.Diet == o)">@o</option>
@@ -103,7 +109,7 @@
                     </div>
 
                     <div class="field">
-                        <label for="allergies">Аллергии и нелюбимые продукты</label>
+                        <label for="allergies">@Localizer["Аллергии и нелюбимые продукты"]</label>
                         <input id="allergies" name="allergies" type="text" maxlength="150"
                                placeholder="Например: орехи, мёд" value="@Model.Allergies" class="@InvalidClass("Allergies")" />
                         <span class="error" data-error-for="allergies">@Err("Allergies")</span>
@@ -111,10 +117,10 @@
                 </fieldset>
 
                 <fieldset class="group">
-                    <legend>Предпочтения</legend>
+                    <legend>@Localizer["Предпочтения"]</legend>
 
                     <div class="field">
-                        <span class="label-like" id="interestsLabel">Что вам интересно</span>
+                        <span class="label-like" id="interestsLabel">@Localizer["Что вам интересно"]</span>
                         <div class="chips" role="group" aria-labelledby="interestsLabel">
                             @foreach (var item in CookingPreferencesViewModel.InterestOptions)
                             {
@@ -127,7 +133,7 @@
                     </div>
 
                     <div class="field">
-                        <span class="label-like" id="equipmentLabel">Кухонная техника</span>
+                        <span class="label-like" id="equipmentLabel">@Localizer["Кухонная техника"]</span>
                         <div class="chips" role="group" aria-labelledby="equipmentLabel">
                             @foreach (var item in CookingPreferencesViewModel.EquipmentOptions)
                             {
@@ -140,7 +146,7 @@
                     </div>
 
                     <div class="field">
-                        <label for="about">О себе</label>
+                        <label for="about">@Localizer["О себе"]</label>
                         <textarea id="about" name="about" rows="3" maxlength="300"
                                   placeholder="Расскажите, что любите готовить">@Model.About</textarea>
                         <span class="counter"><span id="aboutCount">@((Model.About ?? "").Length)</span> / 300</span>
@@ -148,10 +154,10 @@
                     </div>
                 </fieldset>
 
-                <button type="submit" class="btn btn-black" id="submitBtn">Отправить анкету</button>
+                <button type="submit" class="btn btn-black" id="submitBtn">@Localizer["Отправить анкету"]</button>
             </form>
 
-            <p class="modal-note">Все данные хранятся в безопасности.</p>
+            <p class="modal-note">@Localizer["Все данные хранятся в безопасности."]</p>
         }
     </div>
 </div>
@@ -184,7 +190,7 @@
                     if (form.email.classList.contains("input-validation-error")) showEmailError();
                 });
 
-                // Счётчик символов в "О себе"
+                // Счётчик символов в "@Localizer["О себе"]"
                 var about = document.getElementById("about");
                 var aboutCount = document.getElementById("aboutCount");
                 about.addEventListener("input", function () { aboutCount.textContent = about.value.length; });
